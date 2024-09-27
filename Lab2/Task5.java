@@ -1,57 +1,51 @@
-import java.util.Scanner;
+import java.util.*;
+
 public class Task5 {
-   public static void main(String[]args){
+    public static void main(String[] args) {
 
-       int sum=0;
-       double avarage=0;
-       int maximum=0;
-       int minimum=0;
-       int count=0;
-       int count2=0;
+        int sum = 0;
+        double avg = 0;
+        int maximum = 0;
+        int minimum = 0;
+        int count = 0;
+        int count2 = 0;
+        Scanner input = new Scanner(System.in);
 
-       for (int i=1 ;i<count;i++){
-           Scanner input=new Scanner(System.in);
-           int newInput=input.nextInt();
-           sum=sum+newInput;
-           count++;
+        while (true) {
+            int user = input.nextInt();
+            count++;
 
-           if (newInput==0){
-               count2++;
-           }
+            if (user == 0) {
+                count2++;
+            } else {
+                count2 = 0;
+            }
 
-           if (count2==3){
-               break;
-           }
+            if (count2 == 3) {
+                break;
+            }
 
-           else{
-               count2=0;
-               if (count==1) {
-                   minimum=newInput;
-                   maximum=newInput;
+            sum += user;
+            avg = 1.0 * sum / count;
 
-               }
-               else if (newInput<minimum){
-                   minimum=newInput;
-               }
-               else if (newInput>maximum){
-                   maximum=newInput;
-               }
+            if (count == 1) {
+                maximum = user;
+                minimum = user;
+            } else {
+                if (user > maximum) {
+                    maximum = user;
+                }
+                if (user < minimum && user != 0) {
+                    minimum = user;
+                }
+            }
+        }
 
-           }
+        System.out.println("Sum = " + sum);
+        System.out.println("Average = " + avg);
+        System.out.println("Minimum = " + minimum);
+        System.out.println("Maximum = " + maximum);
 
-
-
-
-
-
-       }
-       avarage=1.0*sum/count;
-
-       System.out.println("Sum="+sum);
-       System.out.println("Average="+avarage);
-       System.out.println("Minimum="+minimum);
-       System.out.println("Maximum="+maximum);
-
-
+        input.close();
     }
 }
