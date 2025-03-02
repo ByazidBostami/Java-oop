@@ -45,3 +45,47 @@ public class task4 {
         
     }
 }
+import java.util.Scanner;
+
+public class task4 {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        int count = 0;
+        int sum = 0;
+        int minimum = 0;
+        int maximum = 0;
+        int validCount = 0;
+
+        for (count = 0; count < 10; count++) {
+            System.out.println("Enter a number: ");
+            int newInput = input.nextInt();
+
+            if (newInput % 2 != 0 && newInput > 0) {
+                sum += newInput;
+                validCount++;
+                if (validCount == 1) {
+                    maximum = newInput;
+                    minimum = newInput;
+                } else {
+                    if (newInput < minimum) {
+                        minimum = newInput;
+                    }
+                    if (newInput > maximum) {
+                        maximum = newInput;
+                    }
+                }
+            }
+        }
+
+        if (validCount > 0) {
+            double avg = (double) sum / validCount;
+            System.out.println("Sum = " + sum);
+            System.out.println("Minimum = " + minimum);
+            System.out.println("Maximum = " + maximum);
+            System.out.println("Average = " + avg);
+        } else {
+            System.out.println("No odd positive numbers found");
+        }
+    }
+}
